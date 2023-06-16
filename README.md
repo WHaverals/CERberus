@@ -28,8 +28,10 @@ After this, you can run the application using the following command:
 python app.py
 ```
 
-Remember to make sure your `cerberus` Conda environment is activated when you run this app. If it's not, you can activate it with `conda activate cerberus`.
+Remember to make sure your `CERberus` Conda environment is activated when you run this app. If it's not, you can activate it with `conda activate CERberus`.
 
 Navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000/) (or, possibly, another address that is printed to your console) to view the application in your web browser.
 
 ## CERberus
+
+![ CERberus showing off what it's packing!](cerberus.gif) / ! [](cerberus.gif)
