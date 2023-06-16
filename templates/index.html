@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
+    <!-- Google Font Cardo -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
+
+    <!-- All other Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Foldit:wght@600&family=Inconsolata:wght@400;700&family=Nanum+Gothic+Coding:wght@400;700&family=Ubuntu&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        .tooltip.bs-tooltip-top .tooltip-inner {
+            background-color: #3d85c6; /* Change the background color */
+            color: #fff; /* Change the text color */
+            padding: 10px; /* Add some padding */
+            font-family: 'Inconsolata';
+        }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Change this color to suit your design */
+    color: black; /* Change this color to suit your design */
+    text-align: right; /* Align text to the right */
+    padding: 10px;
+    font-size: 0.8em; /* Reduce font size */
+    height: 50px; /* Adjust this based on the height of your footer */
+}
+
+body {
+    padding-bottom: 60px; /* Adjust this value based on the height of your footer */
+}
+
+    </style>
+
+    <style>
+        td {
+            font-family: 'Cardo', serif;
+        }
+
+        textarea {
+            font-family: 'Cardo', serif;
+        }
+    </style>
+
+    <title>CERberus -- guardian against character errors</title>
+</head>
+<body class="bg-light bg-gradient">
+
+    <div class="container" style="font-family: 'Inconsolata'">
+    <!-- Full-width navbar -->
+    <nav class="navbar navbar-expand-lg" style="border: 1px solid black; border-top: none; border-radius: 0 0 10px 10px; background: transparent;">
+        <div class="container">
+            <a class="navbar-brand" style="font-family: 'Inconsolata'">
+                CERberus -- guardian against character errors
+            </a>
+        </div>
+    </nav>
+
+    
+        <form action="/cer" method="post">
+
+<!-- Reference Text Card -->
+<div class="card border-info mb-3 mt-3">
+  <div class="card-header">Reference Text</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+<textarea class="form-control" id="reference" name="reference" rows="3" placeholder="Paste text here or drop a .txt file!" ondrop="dropHandlerReference(event);" ondragover="dragOverHandler(event);"></textarea>
+        </div>
+      </div>
+      <!--<div class="col-md-6">
+        <div class="form-group">
+          <label for="formFile" class="form-label">Upload text file</label>
+          <input class="form-control" type="file" id="formFile" accept=".txt" onchange="loadFile(event)">
+        </div>
+      </div>-->
+    </div>
+  </div>
+</div>
+
+<!-- Hypothesis Text Card -->
+<div class="card border-warning mb-3">
+    <div class="card-header">Hypothesis Text</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+<textarea class="form-control" id="hypothesis" name="hypothesis" rows="3" placeholder="Paste text here or drop a .txt file!" ondrop="dropHandlerHypothesis(event);" ondragover="dragOverHandler(event);"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="accordion" id="optionsAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="optionsAndIgnoreCharacters">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOptionsAndIgnoreCharacters">
+            Options and Ignore Characters
+        </button>
+    </h2>
+    <div id="collapseOptionsAndIgnoreCharacters" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        <div class="card text-dark bg-light mb-3" style="max-width: 100%;">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ignore_punctuation" name="ignore_punctuation">
+                            <label class="form-check-label" for="ignore_punctuation">Ignore punctuation</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="tooltip" title="Removes all punctuation marks from the reference and hypothesis texts. Only alphanumeric characters and spaces are retained." style="font-size: 1rem;"></i>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ignore_case" name="ignore_case">
+                            <label class="form-check-label" for="ignore_case">Ignore case</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="tooltip" title="Ignores case differences between the reference and hypothesis texts. Both texts are converted to lowercase." style="font-size: 1rem;"></i>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ignore_whitespace" name="ignore_whitespace">
+                            <label class="form-check-label" for="ignore_whitespace">Ignore whitespace</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="tooltip" title="Removes all whitespace characters (spaces, tabs, line breaks) from the reference and hypothesis texts." style="font-size: 1rem;"></i>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ignore_numbers" name="ignore_numbers">
+                            <label class="form-check-label" for="ignore_numbers">Ignore numbers</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="tooltip" title="Removes all numeric characters (0-9) from the reference and hypothesis texts." style="font-size: 1rem;"></i>
+                        </div>
+                    </div>
+                        <div class="col">
+                            <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ignore_newlines_and_returns" name="ignore_newlines_and_returns">
+                            <label class="form-check-label" for="ignore_newlines_and_returns">Ignore newlines</label>
+                            <i class="bi bi-question-circle" data-bs-toggle="tooltip" title="Removes newline (\n) and carriage return (\r) characters from both the reference and hypothesis texts. Newlines are replaced with spaces to preserve word boundaries." style="font-size: 1rem;"></i>
+            </div>
+        </div>
+
+
+                </div>
+            
+
+<div class="form-group mt-3 pb-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" id="ignore_chars" name="ignore_chars" placeholder="Enter characters to ignore" style="width: 60%;">
+                <span class="input-group-text">
+                    <i class="bi bi-question-circle question-mark" data-bs-toggle="tooltip" title="If a set of specific characters is provided, these characters are removed from both the reference and hypothesis texts." style="font-size: 1rem;"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" id="discard_chars" name="discard_lines_with_chars" placeholder="Enter characters to discard lines" style="width: 60%;">
+                <span class="input-group-text">
+                    <i class="bi bi-question-circle question-mark" data-bs-toggle="tooltip" title="If a set of specific characters is provided, all lines containing these characters are removed from both the reference and hypothesis texts." style="font-size: 1rem;"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group mt-3 pb-3">
+        <div class="row">
+
+
+<div class="input-group">
+            <input type="text" class="form-control" id="replace_chars" name="replace_chars" placeholder="Input characters here that you want to replace.">
+    <span class="input-group-text">---></span>
+
+            <input type="text" class="form-control" id="replacement_chars" name="replacement_chars" placeholder="Enter replacement characters">
+                <span class="input-group-text">
+                    <i class="bi bi-question-circle question-mark" data-bs-toggle="tooltip" title="Character/character sequences entered in the first field will be replaced by character/character sequences entered in the second field. E.g. ij -> y" style="font-size: 1rem;"></i>
+                </span></div>
+
+
+    </div> 
+</div>
+</div>
+</div>
+
+  </div>
+</div>
+</div>
+
+
+<div class="accordion-item">
+    <h2 class="accordion-header" id="cerForUnicodeAndCustomRanges">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCerForUnicodeAndCustomRanges">
+        CER for Unicode Ranges and/or Custom Ranges
+      </button>
+    </h2>
+    <div id="collapseCerForUnicodeAndCustomRanges" class="accordion-collapse collapse">
+      <div class="accordion-body">
+
+        <!-- First Card: Unicode Ranges -->
+        <div class="card text-dark bg-light mb-3">
+          <div class="card-header">CER for Unicode Ranges</div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="unicode_ranges">Unicode Ranges</label>
+                <select multiple class="form-control" id="unicode_ranges" name="unicode_ranges">
+                    <option value="Lowercase Latin alphabet" selected>Lowercase Latin alphabet</option>
+                    <option value="Uppercase Latin alphabet" selected>Uppercase Latin alphabet</option>
+                    <option value="Digits" selected>Digits</option>
+                    <option value="Punctuation" selected>Punctuation</option>
+                    <option value="MUFI Glyphs" selected>MUFI Glyphs</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Card: Custom Ranges -->
+        <div class="card text-dark bg-light mb-3 mt-3">
+          <div class="card-header">CER for Custom Ranges</div>
+          <div class="card-body">
+            <label>Add Custom Range</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="custom_range_name" name="custom_range_name" placeholder="Name">
+              <input type="text" class="form-control" id="custom_range_start" name="custom_range_start" placeholder="Start hex codepoint">
+              <input type="text" class="form-control" id="custom_range_end" name="custom_range_end" placeholder="End hex codepoint">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+</div>
+
+
+
+<button type="submit" class="btn btn-primary mt-3">Calculate CER</button>
+
+</form>
+
+    <div class="footer">
+  <p>© 2023 Wouter Haverals</p>
+</div>
+</div>
+
+<!-- Bootstrap Tooltip -->
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
+
+    window.onload = function() {
+        // Get textareas and button
+        var referenceText = document.getElementById("reference");
+        var hypothesisText = document.getElementById("hypothesis");
+        var submitButton = document.querySelector("button[type='submit']");
+
+        // Function to check if textareas are empty
+        function checkTextareas() {
+            if (referenceText.value.trim() === "" || hypothesisText.value.trim() === "") {
+                submitButton.disabled = true;
+            } else {
+                submitButton.disabled = false;
+            }
+        }
+
+        // Run checkTextareas on page load
+        checkTextareas();
+
+        // Add event listeners to textareas
+        referenceText.addEventListener("input", checkTextareas);
+        hypothesisText.addEventListener("input", checkTextareas);
+    };
+
+    // Handling the 'dragover' event by preventing its default behavior
+function dragOverHandler(event) {
+  event.preventDefault();
+}
+
+// Handling the 'drop' event and getting the dropped file's data for Reference Text
+function dropHandlerReference(event) {
+  event.preventDefault();
+  if (event.dataTransfer.items) {
+    for (var i = 0; i < event.dataTransfer.items.length; i++) {
+      if (event.dataTransfer.items[i].kind === 'file') {
+        var file = event.dataTransfer.items[i].getAsFile();
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var reference = document.getElementById('reference');
+          reference.value = e.target.result;
+          reference.dispatchEvent(new Event('input'));
+        };
+        reader.readAsText(file);
+      }
+    }
+  }
+}
+
+// Handling the 'drop' event and getting the dropped file's data for Hypothesis Text
+function dropHandlerHypothesis(event) {
+  event.preventDefault();
+  if (event.dataTransfer.items) {
+    for (var i = 0; i < event.dataTransfer.items.length; i++) {
+      if (event.dataTransfer.items[i].kind === 'file') {
+        var file = event.dataTransfer.items[i].getAsFile();
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var hypothesis = document.getElementById('hypothesis');
+          hypothesis.value = e.target.result;
+          hypothesis.dispatchEvent(new Event('input'));
+        };
+        reader.readAsText(file);
+      }
+    }
+  }
+}
+
+
+// Handling the 'change' event for the file input
+function loadFile(event) {
+  var file = event.target.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('reference').value = e.target.result;
+  };
+  reader.readAsText(file);
+}
+
+
+</script>
+
+
+</body>
+</html>

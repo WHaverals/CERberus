@@ -1,0 +1,3 @@
+{% macro pprint(obj) %}
+    {{ obj | tojson(indent=2) }}
+{% endmacro %}
