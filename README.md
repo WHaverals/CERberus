@@ -36,7 +36,7 @@ Navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000/) (or, possibly, anoth
 
 ## Features
 
-![ CERberus showing off what it's packing!](cerberus.gif) / ! [](cerberus.gif)
+![ CERberus showing off what it's packing!](cerberus.gif)
 
 -  **Reference Text:** This is the correct, or "gold standard" text. You can paste the reference text directly into the form, or drop a `.txt` file into the provided area.
     
