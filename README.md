@@ -139,4 +139,11 @@ year={2023},
 version={1.0},
 url={https://github.com/WHaverals/CERberus}}
 ```
+
+CERberus was developed in the lead-up to the **DH 2023 conference: Collaboration as Opportunity**, held from July 10-14. The tool's capabilities will be showcased in this presentation given at the conference, focusing on its application to a fascinating case study.
+
+The reference for the conference presentation is:
+
+Haverals, W., & Kestemont, M. (2023, July 10-14). *Handwritten Text Recognition Applied to the Manuscript Production of the Carthusian Monastery of Herne in the Fourteenth Century*. In DH 2023: Collaboration as Opportunity [Conference presentation]. Graz, Austria.
+
 ----
