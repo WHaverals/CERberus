@@ -36,7 +36,7 @@ Navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000/) (or, possibly, anoth
 
 ## Features
 
-![ CERberus showing off what it's packing!](cerberus.gif)
+![ CERberus showing off what it's packing!](readme_imgs/cerberus.gif)
 
 -  **Reference Text:** This is the correct, or "gold standard" text. You can paste the reference text directly into the form, or drop a `.txt` file into the provided area.
     
@@ -60,6 +60,8 @@ CERberus displays the results of its analysis in a variety of ways to provide de
 
 ### CER Results
 
+![ CER Results ](readme_imgs/cer_results.png)
+
 -   **Character Error Rate (CER)**: The main result, which measures the total number of character errors (insertions, deletions, and substitutions) divided by the total number of characters in the reference.
     
 -   **Number of Correct Characters**: The total number of characters that have been correctly predicted by the model.
@@ -81,11 +83,8 @@ CERberus displays the results of its analysis in a variety of ways to provide de
 
 The Character Statistics table provides a detailed analysis of each character in the evaluation text. It gives an understanding of how accurately the model is predicting each character. Here's an example of what the table looks like:
 
-| Character | Count | Correct | Incorrect | Correct Ratio | Incorrect Ratio |
-|-----------|-------|---------|-----------|---------------|-----------------|
-| A         | 1000  | 900     | 100       | 0.90          | 0.10            |
-| B         | 800   | 750     | 50        | 0.94          | 0.06            |
-| C         | 1200  | 1100    | 100       | 0.92          | 0.08            |
+![ Character Statistics ](readme_imgs/char_stats.png)
+
 
 -   **Character**: The individual character evaluated from the text.
 -   **Count**: The total number of occurrences of this character in the reference text.
@@ -98,11 +97,8 @@ The Character Statistics table provides a detailed analysis of each character in
 
 The Block Statistics section provides detailed performance metrics for each Unicode block encountered in the evaluation text. It helps to understand how well the model is predicting characters within each Unicode block. Here's an example of what the table might look like:
 
-| Block                | Count | Correct | Incorrect | Correct Ratio | Incorrect Ratio |
-|----------------------|-------|---------|-----------|---------------|-----------------|
-| Basic Latin          | 2000  | 1800    | 200       | 0.90          | 0.10            |
-| Latin-1 Supplement   | 1500  | 1400    | 100       | 0.93          | 0.07            |
-| Latin Extended-A     | 500   | 450     | 50        | 0.90          | 0.10            |
+![ Block Statistics ](readme_imgs/block_stats.png)
+
 
 -   **Block**: The Unicode block of the characters.
 -   **Count**: The total number of occurrences of characters from this block in the reference text.
@@ -115,11 +111,7 @@ The Block Statistics section provides detailed performance metrics for each Unic
 
 The Confusion Statistics section provides a deeper understanding of the confusions between different characters. For each pair of confused characters, the following metrics are provided:
 
-| Correct Character | Generated Character | Count | Ratio |
-|-------------------|---------------------|-------|-------|
-| 'a'               | 'o'                 | 100   | 0.01  |
-| 'm'               | 'n'                 | 150   | 0.02  |
-| 'e'               | 'a'                 | 200   | 0.03  |
+![ Confusion Statistics ](readme_imgs/conf_stats.png)
 
 -   **Correct Character**: The character that should have been predicted.
 -   **Generated Character**: The character that was actually predicted by the model.
@@ -127,6 +119,8 @@ The Confusion Statistics section provides a deeper understanding of the confusio
 -   **Ratio**: The ratio of this confusion to the total number of character predictions.
 
 To provide a more visual representation of the confusion statistics, a link is provided to a plot which can help to identify the most common character confusions.
+
+![ Confusion Statistics Plot ](readme_imgs/character_confusion_plot.png)
 
 ### Cite
 
