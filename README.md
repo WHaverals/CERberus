@@ -1,5 +1,5 @@
 # CERberus -- guardian against character errors 
-:dog::dog::dog:
+# :dog::dog::dog:
 
 Much like the mythical three-headed dog that guards the gates of the Underworld, **CERberus** ("ser-ber-us") serves as your loyal watchdog for the inspection of mistakes made by any kind of Handwritten Text Recognition tool, such as [Transkribus](https://readcoop.eu/transkribus/), or [eScriptorium](https://gitlab.com/scripta/escriptorium).
 
