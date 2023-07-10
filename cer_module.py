@@ -92,7 +92,7 @@ def cer(reference: str, hypothesis: str,
 
     numCount = len(reference)
 
-    cer_value = (numSub + numIns + numDel) / numCount
+    cer_value = round(((numSub + numIns + numDel) / numCount)*100, 2)
 
     # Prepare the results dictionary
     results = {
@@ -155,8 +155,8 @@ def cer(reference: str, hypothesis: str,
     for block, stats in block_stats.items():
         total = stats['correct'] + stats['incorrect']
         if total > 0:
-            stats['correct_ratio'] = stats['correct'] / total
-            stats['incorrect_ratio'] = stats['incorrect'] / total
+            stats['correct_ratio'] = round((stats['correct'] / total * 100), 2)
+            stats['incorrect_ratio'] = round((stats['incorrect'] / total * 100), 2)
         else:
             stats['correct_ratio'] = None
             stats['incorrect_ratio'] = None
@@ -169,8 +169,8 @@ def cer(reference: str, hypothesis: str,
 
     # Compute precision for each character
     for char, stats in char_stats.items():
-        stats['correct_ratio'] = stats['correct'] / (stats['correct'] + stats['incorrect'])
-        stats['incorrect_ratio'] = stats['incorrect'] / (stats['correct'] + stats['incorrect'])
+        stats['correct_ratio'] = round((stats['correct'] / (stats['correct'] + stats['incorrect']) * 100), 2)
+        stats['incorrect_ratio'] = round((stats['incorrect'] / (stats['correct'] + stats['incorrect']) * 100), 2)
         
     # Convert char_stats to a pandas DataFrame and sort it
     char_stats_df = pd.DataFrame.from_dict(char_stats, orient='index').sort_values(['count', 'correct_ratio'], ascending=[False, False])
@@ -185,7 +185,7 @@ def cer(reference: str, hypothesis: str,
     for correct_char, generated_chars in confusion_stats.items():
         total_confusion_count = sum(generated_chars.values())
         for generated_char, count in generated_chars.items():
-            ratio = count / total_confusion_count
+            ratio = round((count / total_confusion_count * 100), 2)
             confusion_data.append([correct_char, generated_char, count, ratio])
     confusion_df = pd.DataFrame(confusion_data, columns=['correct', 'generated', 'count', 'ratio'])
 
