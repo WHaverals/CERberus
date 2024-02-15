@@ -1,5 +1,6 @@
 # CERberus -- guardian against character errors 🐶🐶🐶
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10668052.svg)](https://doi.org/10.5281/zenodo.10668052)
 
 Much like the mythical three-headed dog that guards the gates of the Underworld, **CERberus** ("ser-ber-us") serves as your loyal watchdog for the inspection of mistakes made by any kind of Handwritten Text Recognition tool, such as [Transkribus](https://readcoop.eu/transkribus/), or [eScriptorium](https://gitlab.com/scripta/escriptorium).
 
@@ -140,10 +141,12 @@ version={1.0},
 url={https://github.com/WHaverals/CERberus}}
 ```
 
-CERberus was developed in the lead-up to the **DH 2023 conference: Collaboration as Opportunity**, held from July 10-14. The tool's capabilities will be showcased in this presentation given at the conference, focusing on its application to a fascinating case study.
+CERberus was developed in the lead-up to the **DH 2023 conference: Collaboration as Opportunity**, held from July 10-14. The tool's capabilities were showcased in a presentation given at the conference.
 
 The reference for the conference presentation is:
 
 Haverals, W., & Kestemont, M. (2023, July 10-14). *Handwritten Text Recognition Applied to the Manuscript Production of the Carthusian Monastery of Herne in the Fourteenth Century*. In DH 2023: Collaboration as Opportunity [Conference presentation]. Graz, Austria.
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10668052.svg)](https://doi.org/10.5281/zenodo.10668052)
 
 ----
