@@ -1,4 +1,5 @@
 Flask==2.2.3
+Werkzeug==2.2.2
 dash==2.9.3
 dash-bootstrap-components==1.4.1
 dash-core-components==2.0.0
