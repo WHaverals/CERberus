@@ -9,3 +9,4 @@ plotly==5.14.1
 python-Levenshtein==0.20.9
 Levenshtein==0.20.9
 pandas==1.5.3
+numpy==1.26.4
